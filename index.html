@@ -368,12 +368,18 @@
     }
 
     // Suntikan Logo Paten
-    const savedLogo = localStorage.getItem('agats_logo_final');
-    if (savedLogo) {
-        document.getElementById('logoImg').src = savedLogo;
-        document.getElementById('logoImg').style.display = 'block';
-        document.getElementById('logoText').style.display = 'none';
-    }
+    // ==================== LOGO RESMI DIPATENKAN = #1e3a8a ====================
+// Tempel teks panjang hasil convert gambar logo Anda di dalam tanda kutip di bawah ini:
+const logoPatenBase64 = "data:image/png;base64,KODE_BASE64_ANDA_DI_SINI.......................dst";
+
+// Sistem otomatis mengunci logo agar permanen di web & cetakan PDF Dinas
+if (logoPatenBase64 && logoPatenBase64.length > 50) {
+    document.getElementById('logoImg').src = logoPatenBase64;
+    document.getElementById('logoImg').style.display = 'block';
+    document.getElementById('logoText').style.display = 'none';
+    // Mengunci ke lokal penyimpanan untuk sinkronisasi PDF otomatis
+    localStorage.setItem('agats_logo_final', logoPatenBase64);
+}
 
     const datePicker = document.getElementById('datePicker');
     datePicker.value = new Date().toISOString().split('T')[0];
